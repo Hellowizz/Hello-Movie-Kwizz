@@ -1,0 +1,21 @@
+.right-container {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+}
+
+.pierreJean-container {
+	height: 80%;
+	margin-top: 20%;
+	border-color: yellow;
+
+	animation: rotate 600ms linear infinite;
+	transform: rotate(5deg);
+}
+
+@keyframes rotate {
+	0% { transform: rotate(5deg) }
+	50%{ transform: rotate(-5deg) }
+    100%{ transform: rotate(5deg) }
+}

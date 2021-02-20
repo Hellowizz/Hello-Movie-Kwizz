@@ -1,23 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
 
+/* COMPONENTS IMPORT */
+import Bubble from './components/Bubble.js';
+import RightSideGame from './components/RightSideGame.js';
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="game-container">
+        <Bubble />
+        <RightSideGame />
+      </div>
+      <div className="background-image-container"/>
     </div>
   );
 }
