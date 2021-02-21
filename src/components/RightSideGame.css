@@ -8,10 +8,37 @@
 .pierreJean-container {
 	height: 80%;
 	margin-top: 20%;
-	border-color: yellow;
 
 	animation: rotate 600ms linear infinite;
 	transform: rotate(5deg);
+}
+
+/* TABLET */
+@media screen and (max-width: 1024px) and (min-width: 580px) {
+  	.right-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.pierreJean-container {
+		margin-top: -10%;
+	}	
+}
+
+
+/* PHONE */
+@media screen and (max-width: 580px) {
+	.right-container {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.pierreJean-container {
+		height: 80%;
+		margin-top: -10%;
+	}	
 }
 
 @keyframes rotate {
