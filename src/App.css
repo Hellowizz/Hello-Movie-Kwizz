@@ -8,14 +8,15 @@ html, body {
 .App {
   text-align: center;
   display: flex;
-  width: 100%;
-  height: 100%;
   font-family: Cocogoose;
 }
 
 .game-container {
   z-index: 2;
   display: inherit;
+  width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .background-image-container {
@@ -33,6 +34,8 @@ html, body {
 @media screen and (max-width: 1024px) and (min-width: 580px) {
   .background-image-container {
     background: none;
+    height: 0;
+    width: 0;
   }
 
   .game-container {
@@ -51,6 +54,8 @@ html, body {
 
   .background-image-container {
     background: none;
+    height: 0;
+    width: 0;
   }
 
   .game-container {

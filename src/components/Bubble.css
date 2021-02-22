@@ -1,5 +1,5 @@
 .bubble-container {
-	margin: 10% 15%;
+	margin: 10%;
 }
 
 .bubble-in {
@@ -41,7 +41,7 @@
 
 .typewriter {
 	color: white;
-	min-height: 205px;
+	min-height: 230px;
 }
 
 .typewriter h2 {
@@ -50,7 +50,7 @@
 
 .typewriter p {
 	color: white;
-	font-size: 20px;
+	font-size: 25px;
 	font-weight: 600;
 }
 
@@ -81,6 +81,11 @@
 		min-height: 350px;
   	}
 
+  	.typewriter {
+		color: white;
+		min-height: 205px;
+	}
+
   	.typewriter p {
 		font-size: 18px;
 		font-weight: 600;
@@ -95,18 +100,22 @@
   	}
 
   	.bubble-in {
-		min-width: 400px;
-		min-height: 350px;
+		min-width: 320px;
+		min-height: 320px;
   	}
 
   	.bubble-under {
   		margin-top: 5%;
-		min-width: 400px;
-		min-height: 350px;
+		min-width: 320px;
+		min-height: 320px;
   	}
 
+  	.typewriter {
+		min-height: 190px;
+	}
+
   	.typewriter p {
-		font-size: 20px;
+		font-size: 15px;
 		font-weight: 600;
 	}
 }
