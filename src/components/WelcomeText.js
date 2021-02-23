@@ -10,7 +10,7 @@ const CustomButton = withStyles({
   root: {
     backgroundColor: '#f89141',
     '&:hover': {
-      backgroundColor: '#89ee97'
+      backgroundColor: '#4f2dcf'
     }
   },
   text: {
@@ -28,7 +28,7 @@ const textWelcome1 = <Typewriter
 	                    	.typeString('<h1>WELCOME !</h1>')
 	                    	.changeDelay('20')
 	                    	.typeString('<p>My name is Pierre-Jean, I\'m the presentator</p>')
-	                    	.typeString('<p>of this amazing game<p>')
+	                    	.typeString('<p>of this amazing game</p>')
 	                    	.changeDelay('50')
 	                    	.pauseFor()
 	                    	.typeString('<h2 className="title-game">HELLO MOVIE KWIZZ !</h2>')
@@ -39,9 +39,9 @@ const textWelcome2 = <Typewriter
 		                onInit={(typewriter) => {
 		                  typewriter
 		                    .changeDelay('20')
-		                    .typeString('<p>The rules are simples,</p>')
-		                    .typeString('<p>I\'m going to ask you questions about movies<p>')
-		                    .typeString('<p>and you will have <span>one minute</span> to answer,<p>')
+		                    .typeString('<p>The rules are simple,</p>')
+		                    .typeString('<p>I\'m going to ask you <span>questions about movies</span></p>')
+		                    .typeString('<p>and you will have <span>one minute</span> to answer,</p>')
 		                    .changeDelay('50')
 		                    .pauseFor()
 		                    .typeString('<h2 className="title-game">LET\'S HAVE FUN !</h2>')

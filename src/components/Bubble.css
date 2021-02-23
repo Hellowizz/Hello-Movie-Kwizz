@@ -32,6 +32,19 @@
 	position: relative;
 }
 
+/* TIME */
+.time-left {
+	color: white;
+	font-size: 20px;
+	padding: 10px;
+	min-height: 40px;
+	min-width: 40px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 /* TEXT WRITTER */
 .Typewriter__cursor {
 	display: none;
@@ -50,7 +63,7 @@
 
 .typewriter p {
 	color: white;
-	font-size: 25px;
+	font-size: 22px;
 	font-weight: 600;
 }
 
@@ -87,7 +100,7 @@
 	}
 
   	.typewriter p {
-		font-size: 18px;
+		font-size: 15px;
 		font-weight: 600;
 	}
 }
@@ -115,7 +128,7 @@
 	}
 
   	.typewriter p {
-		font-size: 15px;
+		font-size: 12px;
 		font-weight: 600;
 	}
 }

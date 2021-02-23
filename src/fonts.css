@@ -4,3 +4,10 @@
     font-weight: 300;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Comfortaa';
+    src: url('./fonts/Comfortaa.ttf');
+    font-weight: 300;
+    font-style: normal;
+}
