@@ -36,6 +36,7 @@
 .time-left {
 	color: white;
 	font-size: 20px;
+	font-weight: 600;
 	padding: 10px;
 	min-height: 40px;
 	min-width: 40px;
@@ -51,10 +52,11 @@
 }
 
 /* TEXT */
-
 .typewriter {
 	color: white;
 	min-height: 230px;
+	max-width: 510px;
+	overflow: hidden;
 }
 
 .typewriter h2 {
@@ -74,6 +76,12 @@
 /* BUTTONS */
 .bubble-buttons {
 	margin-top: 15px;
+}
+
+/* SCORE */
+.score-container {
+	margin-top: 15px;
+	color: white;
 }
 
 /* TABLET */

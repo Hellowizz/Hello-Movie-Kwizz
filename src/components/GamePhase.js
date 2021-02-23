@@ -72,6 +72,7 @@ class GamePhase extends React.Component {
     loading: PropTypes.bool,
     questionsDatas: PropTypes.array,
     score: PropTypes.number,
+    highscore: PropTypes.number,
     setScore: PropTypes.func,
   };
 
@@ -95,10 +96,9 @@ class GamePhase extends React.Component {
   }
 
   startTimer() {
-      if (this.timer == 0 && this.state.seconds > 0) {
+      if (this.timer === 0 && this.state.seconds > 0) {
         this.timer = setInterval(this.countDown, 1000);
       }
-      console.log('start timer');
   }
 
   countDown() {
@@ -108,20 +108,26 @@ class GamePhase extends React.Component {
       // Check if we're at zero.
       if (this.state.seconds == 0) { 
         clearInterval(this.timer);
+        this.props.setPhaseGame('gameOver');
       }
   }
 
   handleClick (buttonType) {
     if(buttonType === 'YES') {
-      if(this.state.currentQuestionData.isTrue === true) {
+      if(this.state.currentQuestionData && this.state.currentQuestionData.isTrue === true) {
         this.props.setScore(this.props.score + 1);
       }
     } else {
-      if(this.state.currentQuestionData.isTrue === false) {
+      if(this.state.currentQuestionData && this.state.currentQuestionData.isTrue === false) {
         this.props.setScore(this.props.score + 1);
       }
     }
     const newId = this.state.idCurrentQuestion + 1;
+    console.log('newId : ' + newId + ' length : ' + this.props.questionsDatas.length);
+    if (newId >= this.props.questionsDatas.length) {
+      clearInterval(this.timer);
+      this.props.setPhaseGame('gameOver');
+    }
     this.setState({idCurrentQuestion: newId, currentQuestionData:  this.props.questionsDatas[newId]});
   }
 
@@ -148,6 +154,12 @@ class GamePhase extends React.Component {
             <div>
               <CustomYESButton onClick={() => this.handleClick('YES')}>YES</CustomYESButton>
               <CustomNOButton onClick={() => this.handleClick('NO')}>NO</CustomNOButton>
+            </div>
+            <div>
+              <p className="score-container">Current score : <span style={{ color : '#74d19c', fontWeight: '600'}}>{this.props.score}</span></p>
+              {this.props.highscore > 0 && 
+                <p className="score-container">Higher score : <span style={{ color : '#f89141', fontWeight: '600'}}>{this.props.highscore}</span></p>
+              }
             </div>
          </div>
     );
