@@ -39,7 +39,12 @@ class App extends React.Component {
 
 		this.setState({ loading: false, datas: persons, questionsDatas: questionsDatas });
 
-   		this.setScore = this.setScore.bind(this);
+		/* Get the high score save in the navigator if the is one */
+		const savedHighScore = localStorage.getItem('highscoreSave');
+		console.log('saved = ' + savedHighScore);
+		if (savedHighScore) {
+			this.setState({ highscore: savedHighScore });
+		}
 	}
 
 	setScore (newScore) {
@@ -47,8 +52,11 @@ class App extends React.Component {
 		console.log('currentScore : ' + newScore);
 	}
 
-	async reRunGame () {
-		this.state.score > this.state.highscore && this.setState({ highscore : this.state.score })
+	reRunGame () {
+		if(this.state.score > this.state.highscore) {
+			this.setState({ highscore : this.state.score });
+			localStorage.setItem('highscoreSave', this.state.score);
+		}
 		this.setScore(0);
 		this.setState({ questionsDatas: makeQuestions(this.state.datas) }); // we wont have the same questions as before
 	}

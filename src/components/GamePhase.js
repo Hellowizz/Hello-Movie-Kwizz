@@ -1,12 +1,18 @@
 import React from 'react';
 import PropTypes from "prop-types";
 
+/* COMPONENTS IMPORTS */
+import QuestionComponent from './QuestionComponent';
+
 /* MATERIAL UI */
-import Button from '@material-ui/core/Button';
+import { Tooltip, Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 /* TYPERITTER */
 import Typewriter from 'typewriter-effect';
+
+/* RESPONSIVE */
+import { MediaQuery, useMediaQuery } from 'react-responsive'
 
 /* BUTTON CUSTOMISATION */
 const CustomYESButton = withStyles({
@@ -39,6 +45,12 @@ const CustomNOButton = withStyles({
     fontFamilu: 'Trebuchet MS, sans-serif'
   }
 })(Button);
+
+const CustomTooltip = withStyles({
+  tooltip: {
+    backgroundColor: '#4f2dcf',
+  }
+})(Tooltip);
 
 const textLoading = <Typewriter
                     onInit={(typewriter) => {
@@ -79,12 +91,13 @@ class GamePhase extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { idCurrentQuestion: 0, currentQuestionData: null, seconds: 60 };
+    this.state = { idCurrentQuestion: 0, currentQuestionData: null, seconds: 60, isTabletOrMobile: undefined, showImage: null };
 
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleTouch = this.handleTouch.bind(this);
   }
 
   componentDidMount () {
@@ -102,17 +115,15 @@ class GamePhase extends React.Component {
   }
 
   countDown() {
-      // Remove one second, set state so a re-render happens.
       this.setState({ seconds: this.state.seconds - 1 });
       
-      // Check if we're at zero.
-      if (this.state.seconds == 0) { 
+      if (this.state.seconds === 0) { 
         clearInterval(this.timer);
         this.props.setPhaseGame('gameOver');
       }
   }
 
-  handleClick (buttonType) {
+  handleClick (buttonType) { // Click yes or no buttons
     if(buttonType === 'YES') {
       if(this.state.currentQuestionData && this.state.currentQuestionData.isTrue === true) {
         this.props.setScore(this.props.score + 1);
@@ -123,7 +134,7 @@ class GamePhase extends React.Component {
       }
     }
     const newId = this.state.idCurrentQuestion + 1;
-    console.log('newId : ' + newId + ' length : ' + this.props.questionsDatas.length);
+    this.setState({ showImage : null });
     if (newId >= this.props.questionsDatas.length) {
       clearInterval(this.timer);
       this.props.setPhaseGame('gameOver');
@@ -131,10 +142,25 @@ class GamePhase extends React.Component {
     this.setState({idCurrentQuestion: newId, currentQuestionData:  this.props.questionsDatas[newId]});
   }
 
+  handleTouch(toShow) { // Touch on the name of the actor or movie title (only for tablet and mobile mode)
+    console.log('Touch and toShow : ' + toShow);
+    this.setState({showImage : toShow});
+  }
+
+  // AJOUTER UN ONTOUCH POUR AFFICHER LES IMAGES EN MODE TELEPHONE ET TABLETTE !!!
+
   render()  {
     const loading = this.props.loading;
     const currentQuestionData = this.state.currentQuestionData;
     const sec = this.state.seconds;
+    const showImage = this.state.showImage;
+    const imgToShow = showImage !== null ? 
+                      <img  alt="ImgActor" 
+                            src={showImage === 'actor' ? currentQuestionData.actorImg : currentQuestionData.movieImg} 
+                            style={{ height: '120px' }}
+                      /> 
+                      : undefined;
+
     const redValue = Math.floor(248 - sec*1.85);
     const greenValue = Math.floor(145 + sec*1.55);
     const blueValue = Math.floor(65 + sec*1.43);
@@ -145,12 +171,10 @@ class GamePhase extends React.Component {
             <div className="typewriter" style = {{ display: 'flex', alignItems: 'center'}}>
                 {loading === true && textLoading}
                 {loading === false && currentQuestionData && 
-                    <div>
-                      <p>Did <span>{currentQuestionData.actorName}</span></p>
-                      <p>star in <span>{currentQuestionData.movieTitle}</span>?</p>
-                    </div>
+                    <QuestionComponent questionData={currentQuestionData} handleTouch={this.handleTouch}/>
                 }
             </div>
+            {showImage !== null && <div className="show-image">{imgToShow}</div>}
             <div>
               <CustomYESButton onClick={() => this.handleClick('YES')}>YES</CustomYESButton>
               <CustomNOButton onClick={() => this.handleClick('NO')}>NO</CustomNOButton>
@@ -158,7 +182,7 @@ class GamePhase extends React.Component {
             <div>
               <p className="score-container">Current score : <span style={{ color : '#74d19c', fontWeight: '600'}}>{this.props.score}</span></p>
               {this.props.highscore > 0 && 
-                <p className="score-container">Higher score : <span style={{ color : '#f89141', fontWeight: '600'}}>{this.props.highscore}</span></p>
+                <p className="score-container">Highest score : <span style={{ color : '#f89141', fontWeight: '600'}}>{this.props.highscore}</span></p>
               }
             </div>
          </div>

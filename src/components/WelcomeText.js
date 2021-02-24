@@ -40,17 +40,14 @@ const textWelcome2 = <Typewriter
 		                  typewriter
 		                    .changeDelay('20')
 		                    .typeString('<p>The rules are simple,</p>')
-		                    .typeString('<p>I\'m going to ask you <span>questions about movies</span></p>')
-		                    .typeString('<p>and you will have <span>one minute</span> to answer,</p>')
-		                    .changeDelay('50')
-		                    .pauseFor()
-		                    .typeString('<h2 className="title-game">LET\'S HAVE FUN !</h2>')
+		                    .typeString('<p>I\'m going to ask you <span>questions about movies</span> and you will have <span>one minute</span> to answer.</p>')
+                        .typeString('<p>You can pass the mouse over a name or touch it to see a <span>picture of an actor or a movie</span>.</p>')
 		                    .start();
 		                }}
               		/>
 
 function WelcomeText({phaseGame, setPhaseGame}) {
-	const inButton = phaseGame === 'welcome1' ? 'Okay' : 'Play';
+	const inButton = (phaseGame === 'welcome1') ? 'Okay' : 'Play';
 
 	return (
     	<div className="bubble-in">

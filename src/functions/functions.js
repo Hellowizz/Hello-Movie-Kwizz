@@ -29,24 +29,24 @@ export function makeQuestions (persons) {
 		let idInTabMovie = Math.floor(Math.random() * actor.movies.length);
 		let movie = actor.movies[idInTabMovie];
 
-		console.log(actor.name + ' did star in : ' + movie.title);
-		console.log('The answer should be : ' + isTrue);
+		// console.log(actor.name + ' did star in : ' + movie.title);
+		// console.log('The answer should be : ' + isTrue);
 
 		if (!isTrue) {
 			const idInTabSecondActor = Math.floor(Math.random() * persons.length);
 			const secondActor = persons[idInTabSecondActor];
-			console.log('Then, the second actor from who to take the movie is : ' + secondActor.name);
+			// console.log('Then, the second actor from who to take the movie is : ' + secondActor.name);
 			if (idInTabActor === idInTabSecondActor) {
 				isTrue = true;
-				console.log('Arf, we pick the same, let say the question has the right answer !')
+				// console.log('Arf, we pick the same, let say the question has the right answer !')
 			} else {
 				idInTabMovie = Math.floor(Math.random() * secondActor.movies.length);
 				movie = secondActor.movies[idInTabMovie];
 				/* search if they did star in the same movie */
 				const playedInSameMovie = actor.movies.findIndex(movieFirst => movieFirst.id === movie.id);
-				console.log('Did they played in the same movie ? ' + (playedInSameMovie !== -1));
+				// console.log('Did they star in the same movie ? ' + (playedInSameMovie !== -1));
 				if (playedInSameMovie !== -1) { isTrue = true }
-				console.log('If no, ' + actor.name + ' did not star in ' + movie.title);
+				// console.log('If no, ' + actor.name + ' did not star in ' + movie.title);
 			}
 		}
 		const questionData = {'id' : i, 'isTrue': isTrue, 'actorName': actor.name, 'actorId': actor.id, 'actorImg': actor.imgPath, 

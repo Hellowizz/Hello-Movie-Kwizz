@@ -73,6 +73,13 @@
 	color: #f89141;
 }
 
+
+/* IMAGE */
+.show-image {
+	margin: -20px 0 20px 0;
+	border: 3px solid #4f2dcf;
+}
+
 /* BUTTONS */
 .bubble-buttons {
 	margin-top: 15px;
@@ -92,18 +99,25 @@
   	}
 
   	.bubble-in {
-		min-width: 400px;
-		min-height: 350px;
+		min-width: 510px;
+		min-height: 530px;
   	}
 
   	.bubble-under {
   		margin-top: 5%;
-		min-width: 400px;
-		min-height: 350px;
+		min-width: 510px;
+		min-height: 530px;
   	}
+
+  	/* IMAGE */
+	.show-image {
+		margin: -50px 0 20px 0;
+		border: 3px solid #4f2dcf;
+	}
 
   	.typewriter {
 		color: white;
+		max-width: 470px;
 		min-height: 205px;
 	}
 
@@ -122,17 +136,18 @@
 
   	.bubble-in {
 		min-width: 320px;
-		min-height: 320px;
+		min-height: 428px;
   	}
 
   	.bubble-under {
   		margin-top: 5%;
 		min-width: 320px;
-		min-height: 320px;
+		min-height: 428px;
   	}
 
   	.typewriter {
-		min-height: 190px;
+		min-height: 100px;
+		max-width: 280px;
 	}
 
   	.typewriter p {
