@@ -39,17 +39,16 @@ class App extends React.Component {
 
 		this.setState({ loading: false, datas: persons, questionsDatas: questionsDatas });
 
-		/* Get the high score save in the navigator if the is one */
+		/* Get the high score saved in the navigator if the is one */
 		const savedHighScore = localStorage.getItem('highscoreSave');
-		console.log('saved = ' + savedHighScore);
+
 		if (savedHighScore) {
-			this.setState({ highscore: savedHighScore });
+			this.setState({ highscore: parseInt(savedHighScore) });
 		}
 	}
 
 	setScore (newScore) {
 		this.setState({score : newScore});
-		console.log('currentScore : ' + newScore);
 	}
 
 	reRunGame () {

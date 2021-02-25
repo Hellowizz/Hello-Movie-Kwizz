@@ -20,8 +20,9 @@ export function arrangePersons (datas) {
 
 export function makeQuestions (persons) {
 	let questionsTab = [];
+	let i = 0;
 
-	for(let i=0; i<(NUMBER_OF_QUESTIONS -1); ++i) {
+	while(i < (NUMBER_OF_QUESTIONS - 1)) {
 
 		let isTrue = (Math.random() > .6);
 		const idInTabActor = Math.floor(Math.random() * persons.length);
@@ -49,9 +50,15 @@ export function makeQuestions (persons) {
 				// console.log('If no, ' + actor.name + ' did not star in ' + movie.title);
 			}
 		}
-		const questionData = {'id' : i, 'isTrue': isTrue, 'actorName': actor.name, 'actorId': actor.id, 'actorImg': actor.imgPath, 
+
+		const questionAlreadyExistId = questionsTab.findIndex(q => q.actorId === actor.id && q.movieId === movie.id);
+
+		if (questionAlreadyExistId === -1) {
+			i++;
+			const questionData = {'id' : i, 'isTrue': isTrue, 'actorName': actor.name, 'actorId': actor.id, 'actorImg': actor.imgPath, 
 							'movieTitle': movie.title, 'movieId': movie.id, 'movieImg': movie.imgPath}
-		questionsTab.push(questionData);
+			questionsTab.push(questionData);
+		}
 	}
 
 	return questionsTab;

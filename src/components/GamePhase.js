@@ -5,14 +5,11 @@ import PropTypes from "prop-types";
 import QuestionComponent from './QuestionComponent';
 
 /* MATERIAL UI */
-import { Tooltip, Button } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 /* TYPERITTER */
 import Typewriter from 'typewriter-effect';
-
-/* RESPONSIVE */
-import { MediaQuery, useMediaQuery } from 'react-responsive'
 
 /* BUTTON CUSTOMISATION */
 const CustomYESButton = withStyles({
@@ -45,12 +42,6 @@ const CustomNOButton = withStyles({
     fontFamilu: 'Trebuchet MS, sans-serif'
   }
 })(Button);
-
-const CustomTooltip = withStyles({
-  tooltip: {
-    backgroundColor: '#4f2dcf',
-  }
-})(Tooltip);
 
 const textLoading = <Typewriter
                     onInit={(typewriter) => {
@@ -143,7 +134,6 @@ class GamePhase extends React.Component {
   }
 
   handleTouch(toShow) { // Touch on the name of the actor or movie title (only for tablet and mobile mode)
-    console.log('Touch and toShow : ' + toShow);
     this.setState({showImage : toShow});
   }
 
